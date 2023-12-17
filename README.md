@@ -66,20 +66,20 @@ replace `{Dataset}` with `Computer` | `Ficus` | `Gate` | `Lego` | `Materials` | 
 '--...' can be set to your likes, see `Running the code` for details
 
 ## Running the code
-To train MC_NeRF(recommended for two-card mode):
+To train MC_NeRF(recommended for two-GPU mode):
 ```
 # <CONFIG> <DEVICE_NUM> and <START_DEVICE> can be set to your likes, while <ROOT_DATA> and <DATA_NAME> are shown in 'Dataset' for details
 
-# single-card mode
+# single-GPU mode
 python main.py --train --config=<CONFIG> --root_data=<ROOT_DATA> --data_name=<DATA_NAME> --start_device=<START_DEVICE>  
 eg: python main.py --train --root_data=dataset_Ball --data_name=Ball_Computer --start_device=1
 
-# multi-card mode
+# multi-GPU mode
 python -m torch.distributed.launch --nproc_per_node=<DEVICE_NUM> --use_env main.py --train --config=<CONFIG> --root_data=<ROOT_DATA> --data_name=<DATA_NAME> --start_device=<START_DEVICE>  
 eg: python -m torch.distributed.launch --nproc_per_node=2 --use_env main.py --train --root_data=dataset_Ball --data_name=Ball_Computer --start_device=1  
 ```
 ---
-To test MC_NeRF(only single-card mode):
+To test MC_NeRF(only single-GPU mode):
 ```
 # <CONFIG> and <START_DEVICE> can be set to your likes, while <ROOT_DATA> and <DATA_NAME> are shown in 'Dataset' for details
 
