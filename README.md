@@ -1,4 +1,4 @@
-# MC_NeRF: Muti-Camera Neural Radiance Fields for Muti-Camera Image Acquisition System
+# MC_NeRF: Multi-Camera Neural Radiance Fields for Multi-Camera Image Acquisition System
 Project page: https://in2-viaun.github.io/MC-NeRF/  
 arXiv preprint: https://arxiv.org/abs/2309.07846
 
@@ -95,7 +95,7 @@ If you want to use tensorboard tools to show training results: add `--tensorboar
 If you find this implementation or pre-trained models helpful, please consider to cite:
 ```
 @misc{gao2023mcnerf,
-  title={MC-NeRF: Muti-Camera Neural Radiance Fields for Muti-Camera Image Acquisition Systems}, 
+  title={MC-NeRF: Multi-Camera Neural Radiance Fields for Multi-Camera Image Acquisition Systems}, 
   author={Yu Gao and Lutong Su and Hao Liang and Yufeng Yue and Yi Yang and Mengyin Fu},
   year={2023},
   eprint={2309.07846},
