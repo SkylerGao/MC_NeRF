@@ -1,0 +1,83 @@
+# Parameters for MC-NeRF
+system:
+    data:
+        # root path for data
+        # root_data: '/home/a_datasets0/MC_NeRF/Array'
+        # data_name: 'lego'
+        # data seed
+        seed: 42
+    # device
+    device:
+        dev: 'cuda'
+    # epoch for different stage
+    epoch:
+        # Camera Parameter Initial Stage
+        cam_param_stage: 20
+        # Global Optimization Stage
+        global_opt_stage: 16
+        # Fine-tuning Stage
+        fine_tune_stage: 16
+    train_params:
+        stage_1_lr: 0.1
+        # suggest: 
+        # Ball/HalfBall 0.0005
+        # Room 0.0005
+        # Array 0.00025~0.0001
+        stage_2_lr: 0.0005
+        stage_3_lr: 0.00025
+        weight_decay: 0.0004
+        warmup_epoch: 100
+        batch: 7000
+    test_params:
+        # test model file
+        nerf_model_name: "weights/train/lego-EPOCH-51-2023-09-19-18-49-50.ckpt"
+        # forward resolution
+        resolution_h: 800 
+        resolution_w: 800
+    # weights save path
+    weights_params:
+        root_weights: './weights'
+    # train/test rendering save path
+    out_params:
+        root_out: './results'
+        test_enerf_pth: './img_rendered'
+    log_params:
+        logpath: './log'
+    tensorboard_params:
+        tb_pth: './tensorboard'
+        # delete old files
+        del_mode: False
+    # size of Apriltag, including white boundary
+    apriltag:
+        tag_size: 1.0  
+
+# NeRF config
+model:
+    barf:
+        # when set True, import barf mask to encode
+        barf_mask: False
+        # this range only available in Global Optimization Stage
+        barf_start: 0.0
+        barf_end: 1.0
+    nerf:
+        near: 1
+        far: 8
+        samples: 128
+        sample_scale: 5
+        # S:128, M:256, L:512, X:1024
+        grid_nerf: 384
+        sigma_init: 30.0
+        sigma_default: -20.0
+        weight_thresh: 0.001
+        global_boader_min: -3.5 
+        global_boader_max: 3.5 
+        white_back: True
+        emb_freqs_xyz: 10
+        coarse_MLP_depth: 4
+        coarse_MLP_width: 128
+        coarse_MLP_skip: [2]
+        fine_MLP_depth: 8
+        fine_MLP_width: 256  
+        fine_MLP_skip: [4]
+        MLP_deg: 2        
+                                           
