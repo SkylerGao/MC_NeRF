@@ -2,8 +2,8 @@
 system:
     data:
         # root path for data
-        root_data: '/home/a_datasets0/MC_NeRF/Array'
-        data_name: 'lego'
+        # root_data: '/home/a_datasets0/MC_NeRF/Array'
+        # data_name: 'lego'
         # data seed
         seed: 42
     # device
