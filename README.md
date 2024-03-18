@@ -50,45 +50,32 @@ To play with other scenes presented in the paper, download the data [here](https
 |   |   └── ...
 |   ├── ...
 ```
----
-To train MC_NeRF on different datasets:
-```
-python main.py --train --root_data=./data/dataset_{Style} --data_name={Style}_{Dataset} --...
-```  
-replace `{Style}` with `Array` | `Ball` | `HalfBall` | `Room`  
-replace `{Dataset}` with `Computer` | `Ficus` | `Gate` | `Lego` | `Materials` | `Snowtruck` | `Statue` | `Train`   
-'--...' can be set to your likes, see `Running the code` for details
-
----
-To test MC_NeRF on different datasets:
-```
-python main.py --demo --root_data=./data/dataset_{Style} --data_name={Style}_{Dataset} --...
-```  
-replace `{Style}` with `Array` | `Ball` | `HalfBall` | `Room`  
-replace `{Dataset}` with `Computer` | `Ficus` | `Gate` | `Lego` | `Materials` | `Snowtruck` | `Statue` | `Train`  
-'--...' can be set to your likes, see `Running the code` for details
-
 ## Running the code
 To train MC_NeRF(recommended for two-GPU mode):
 ```
-# <CONFIG> <DEVICE_NUM> and <START_DEVICE> can be set to your likes, while <ROOT_DATA> and <DATA_NAME> are shown in 'Dataset' for details
+# <CONFIG> <DEVICE_NUM> and <START_DEVICE> can be set to your likes 
+# replace {Style} with Array | Ball | HalfBall | Room  
+# replace {Dataset} with Computer | Ficus | Gate | Lego | Materials | Snowtruck | Statue | Train
 
 # single-GPU mode
-python main.py --train --config=<CONFIG> --root_data=<ROOT_DATA> --data_name=<DATA_NAME> --start_device=<START_DEVICE>  
+python main.py --train --config=<CONFIG> --root_data=./data/dataset_{Style} --data_name={Style}_{Dataset} --start_device=<START_DEVICE>  
 eg: python main.py --train --root_data=dataset_Ball --data_name=Ball_Computer --start_device=1
 
 # multi-GPU mode
-python -m torch.distributed.launch --nproc_per_node=<DEVICE_NUM> --use_env main.py --train --config=<CONFIG> --root_data=<ROOT_DATA> --data_name=<DATA_NAME> --start_device=<START_DEVICE>  
+python -m torch.distributed.launch --nproc_per_node=<DEVICE_NUM> --use_env main.py --train --config=<CONFIG> --root_data=./data/dataset_{Style} --data_name={Style}_{Dataset} --start_device=<START_DEVICE>  
 eg: python -m torch.distributed.launch --nproc_per_node=2 --use_env main.py --train --root_data=dataset_Ball --data_name=Ball_Computer --start_device=1  
 ```
 ---
 To test MC_NeRF(only single-GPU mode):
 ```
-# <CONFIG> and <START_DEVICE> can be set to your likes, while <ROOT_DATA> and <DATA_NAME> are shown in 'Dataset' for details
+# <CONFIG> and <START_DEVICE> can be set to your likes
+# replace {Style} with Array | Ball | HalfBall | Room  
+# replace {Dataset} with Computer | Ficus | Gate | Lego | Materials | Snowtruck | Statue | Train
 
-python main.py --demo --config=<CONFIG> --root_data=<ROOT_DATA> --data_name=<DATA_NAME> --start_device=<START_DEVICE>
+python main.py --demo --config=<CONFIG> --root_data=./data/dataset_{Style} --data_name={Style}_{Dataset} --start_device=<START_DEVICE>
 eg: python main.py --demo --root_data=dataset_Ball --data_name=Ball_Computer --start_device=1
 ```
+---
 All the results will be stored in the directory `results`, all the neural network weight parameters will be stored in the directory `weights`.
 
 If you want to save log information to log.txt file: add `--log`.  
