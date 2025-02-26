@@ -50,6 +50,7 @@ To play with other scenes presented in the paper, download the data [here](https
 |   |   └── ...
 |   ├── ...
 ```
+The folder synthetic_dataset_code contains a Blender script for customizing a synthetic multi-camera dataset. Readers can modify the types of objects, as well as the number and parameters of the cameras, according to their needs.
 ## Running the code
 To train MC_NeRF(recommended for two-GPU mode):
 ```
